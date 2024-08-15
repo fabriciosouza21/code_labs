@@ -1,9 +1,9 @@
 # firt_project
 
-flutter-codelab-first 
+flutter-codelab-first
 
 https://codelabs.developers.google.com/codelabs/flutter-codelab-firs
 
-## Getting Started
+![alt text](asserts/firs_app.gif)
 
 
