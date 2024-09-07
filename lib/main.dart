@@ -2,7 +2,9 @@
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:namer_app/album.dart';
 import 'package:namer_app/big_card.dart';
+import 'package:namer_app/form.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -49,6 +51,20 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addFavorite( String current){
+    List<String> listFavorites = current.split(" ");
+    if(listFavorites.length < 2){
+      return;
+    }
+    if(favorites.contains(WordPair(listFavorites[0], listFavorites[1]))){
+      return;
+    }
+    String first = listFavorites[0];
+    String second = listFavorites[1];
+    favorites.add(WordPair(first, second));
+    notifyListeners();
+  }
+
 }
 
 // ...
@@ -73,6 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = AlbumPage();
+        break;
+      case 3:
+        page = FormPage();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -93,6 +115,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     NavigationRailDestination(
                       icon: Icon(Icons.favorite),
                       label: Text('Favorites'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.network_wifi_sharp),
+                      label: Text('Network'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.list_alt),
+                      label: Text('form'),
                     ),
                   ],
                   selectedIndex: selectedIndex,
