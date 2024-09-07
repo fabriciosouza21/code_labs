@@ -39,12 +39,16 @@ class FormPageState extends State<FormPage> {
               children: <Widget>[
                 TextFormField(
                   controller: _textController,
+                  decoration: const InputDecoration(
+                    hintText: 'Insira um texto',
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor insira um texto';
                     }
                     return null;
                   },
+
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
